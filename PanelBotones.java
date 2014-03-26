@@ -8,9 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
-public class PanelBotones extends JPanel implements ActionListener {
+public class PanelBotones extends JPanel implements ActionListener, ChangeListener {
 
 	private JButton abrir,
 					lanzar,
@@ -32,6 +34,7 @@ public class PanelBotones extends JPanel implements ActionListener {
 	
 	private int x=0,
 				y=0,
+				labelslider=0,
 				alturamax=100; 
 	private double nacelereacion=-9.81;
 
@@ -59,14 +62,14 @@ public class PanelBotones extends JPanel implements ActionListener {
 		this.aceleracion=new JTextField(Double.toString(nacelereacion));
 		this.aceleracion.setBounds(120, 280, 70, 35);
 
-		this.barra = new JSlider (JSlider.VERTICAL,0,100,0);
+		this.barra = new JSlider (JSlider.VERTICAL,0,100,50);
 		this.barra.setPaintTicks(true);
 		this.barra.setMajorTickSpacing(25);
 		this.barra.setBounds(60, 360, 70, 145);
+		this.barra.addChangeListener(this);
 		
-		this.etiquetamts=new JLabel("mts: "+alturamax);
+		this.etiquetamts=new JLabel("mts: "+barra.getValue());
 		this.etiquetamts.setBounds(150, 410, 90, 40);
-
 		this.etiquetadib=new JLabel("Dibujar trayectoria");
 		this.etiquetadib.setBounds(90, 520, 350,50);
 		this.dibujar=new Checkbox();
@@ -114,6 +117,15 @@ public class PanelBotones extends JPanel implements ActionListener {
 		}
 		if(e.getSource()==this.guardar){
 			System.out.println("Se ha presionado el boton lanzar");
+		}
+		
+	}
+	
+	public void stateChanged(ChangeEvent e) {
+		int valor;
+		if(e.getSource()==this.barra){
+			valor=barra.getValue();
+			this.etiquetamts.setText("mts: "+valor);
 		}
 		
 	}
