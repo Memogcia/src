@@ -61,10 +61,10 @@ public class PanelBotones extends JPanel implements ActionListener {
 		this.barra.setPaintLabels(true);
 		this.barra.setBounds(120, 360, 70, 145);
 
-		this.etiquetadib=new JLabel("Dibujar linea:");
-		this.etiquetadib.setBounds(60, 531, 350,50);
+		this.etiquetadib=new JLabel("Dibujar trayectoria");
+		this.etiquetadib.setBounds(90, 520, 350,50);
 		this.dibujar=new Checkbox();
-		this.dibujar.setBounds(140, 540, 70, 35);
+		this.dibujar.setBounds(70, 540, 10, 10);
 
 		this.lanzar=new JButton("Lanzar");
 		this.lanzar.addActionListener(this);
@@ -93,7 +93,7 @@ public class PanelBotones extends JPanel implements ActionListener {
 		this.add(this.guardar);
 		this.add(this.abrir);
 		
-		this.setPreferredSize(new Dimension (250,700));
+		this.setPreferredSize(new Dimension (275,720));
 
 	}
 
