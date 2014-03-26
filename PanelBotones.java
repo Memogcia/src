@@ -10,9 +10,11 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 
-public class PanelBotones extends JPanel implements ActionListener, ChangeListener {
+public class PanelBotones extends JPanel implements ActionListener, ChangeListener, DocumentListener {
 
 	private JButton abrir,
 					lanzar,
@@ -34,27 +36,28 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 	
 	private int x=0,
 				y=0,
-				labelslider=0,
-				alturamax=100; 
+				alturamax=100;
+	
 	private double nacelereacion=-9.81;
 
 	public PanelBotones(){
 		
 		this.setLayout(null);
+		//DocumentListener MyDocumentListener=new DocumentListener();
 		
 		this.etiquetavx=new JLabel("Vx:");
 		this.etiquetavx.setBounds(90, 60, 350, 50);
-		this.vx=new JTextField(Integer.toString(x));
+		this.vx=new JTextField(Integer.toString(this.x));
 		this.vx.setBounds(120, 70, 70, 35);
 
 		this.etiquetavy=new JLabel("Vy:");
 		this.etiquetavy.setBounds(90, 130, 350,50);
-		this.vy=new JTextField(Integer.toString(y));
+		this.vy=new JTextField(Integer.toString(this.y));
 		this.vy.setBounds(120, 140, 70, 35);
 
 		this.etiquetamax=new JLabel("Altura Maxima:");
 		this.etiquetamax.setBounds(25, 200, 350,50);
-		this.altura=new JTextField(Integer.toString(alturamax));
+		this.altura=new JTextField(Integer.toString(this.alturamax));
 		this.altura.setBounds(120, 210, 70, 35);
 
 		this.etiquetaac=new JLabel("Aceleracion:");
@@ -62,7 +65,7 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 		this.aceleracion=new JTextField(Double.toString(nacelereacion));
 		this.aceleracion.setBounds(120, 280, 70, 35);
 
-		this.barra = new JSlider (JSlider.VERTICAL,0,100,50);
+		this.barra = new JSlider (JSlider.VERTICAL,0,this.alturamax,50);
 		this.barra.setPaintTicks(true);
 		this.barra.setMajorTickSpacing(25);
 		this.barra.setBounds(60, 360, 70, 145);
@@ -103,8 +106,45 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 		this.add(this.guardar);
 		this.add(this.abrir);
 		
+		
+		this.altura.getDocument().addDocumentListener(new DocumentListener()
+        {
+
+            public void changedUpdate(DocumentEvent arg0){
+
+            }
+            public void insertUpdate(DocumentEvent arg0){
+            	modificarValores();
+            }
+
+            public void removeUpdate(DocumentEvent arg0) {
+            	modificarValores();
+            }
+        });
+		
+		
 		this.setPreferredSize(new Dimension (275,720));
 
+	}
+	
+	public void modificarValores(){
+		try{
+			if(altura.getText()!=null || altura.getText()!=""){
+				this.alturamax=Integer.parseInt(this.altura.getText());
+				this.barra.setMaximum(this.alturamax);
+			}
+		}
+		catch(NumberFormatException e){
+		}
+		
+	}
+	
+	public int getBarra(){
+		return this.barra.getValue();
+	}
+	
+	public int getAlturaMax(){
+		return this.alturamax;
 	}
 
 	@Override
@@ -130,4 +170,21 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 		
 	}
 
+	@Override
+	public void changedUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

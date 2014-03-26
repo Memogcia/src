@@ -4,14 +4,26 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
 public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 	
+	private JLabel Jalturamax;
+	private int altura;
+	
 	public PanelAnimacion(){
 		this.setLayout(null);
+		//this.altura=PanelBotones.getAlturaMax();
+		this.Jalturamax=new JLabel("mts: "+100);
+		this.Jalturamax.setBounds(80,50,90,40);
+		
+		this.add(this.Jalturamax);
+		
 		this.setPreferredSize(new Dimension(800,720));
+		
+		
 	}
 	
 	public void paintComponent(Graphics g){
