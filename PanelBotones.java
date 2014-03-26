@@ -28,6 +28,11 @@ public class PanelBotones extends JPanel implements ActionListener {
 				   etiquetamax,
 				   etiquetaac,
 				   etiquetadib;
+	
+	private int x=0,
+				y=0,
+				alturamax=100; 
+	private double nacelereacion=-9.81;
 
 	public PanelBotones(){
 		
@@ -35,22 +40,22 @@ public class PanelBotones extends JPanel implements ActionListener {
 		
 		this.etiquetavx=new JLabel("Vx:");
 		this.etiquetavx.setBounds(90, 60, 350, 50);
-		this.vx=new JTextField();
+		this.vx=new JTextField(Integer.toString(x));
 		this.vx.setBounds(120, 70, 70, 35);
 
 		this.etiquetavy=new JLabel("Vy:");
 		this.etiquetavy.setBounds(90, 130, 350,50);
-		this.vy=new JTextField();
+		this.vy=new JTextField(Integer.toString(y));
 		this.vy.setBounds(120, 140, 70, 35);
 
 		this.etiquetamax=new JLabel("Altura Maxima:");
 		this.etiquetamax.setBounds(25, 200, 350,50);
-		this.altura=new JTextField();
+		this.altura=new JTextField(Integer.toString(alturamax));
 		this.altura.setBounds(120, 210, 70, 35);
 
 		this.etiquetaac=new JLabel("Aceleracion:");
 		this.etiquetaac.setBounds(40, 270, 350,50);
-		this.aceleracion=new JTextField();
+		this.aceleracion=new JTextField(Double.toString(nacelereacion));
 		this.aceleracion.setBounds(120, 280, 70, 35);
 
 		this.barra = new JSlider (JSlider.VERTICAL,0,100,0);
@@ -79,17 +84,17 @@ public class PanelBotones extends JPanel implements ActionListener {
 		this.abrir.setBounds(160, 650, 80, 40);
 
 		this.add(this.vx);
-		this.add(etiquetavx);
+		this.add(this.etiquetavx);
 		this.add(this.vy);
-		this.add(etiquetavy);
+		this.add(this.etiquetavy);
 		this.add(this.altura);
-		this.add(etiquetamax);
+		this.add(this.etiquetamax);
 		this.add(this.aceleracion);
-		this.add(etiquetaac);
+		this.add(this.etiquetaac);
 		this.add(this.barra);
 		this.add(this.dibujar);
-		this.add(etiquetadib);
-		this.add(lanzar);
+		this.add(this.etiquetadib);
+		this.add(this.lanzar);
 		this.add(this.guardar);
 		this.add(this.abrir);
 		
@@ -99,7 +104,15 @@ public class PanelBotones extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource()==this.lanzar){
+			System.out.println("Se ha lanzado la pelota");
+		}
+		if(e.getSource()==this.abrir){
+			System.out.println("Se ha presionado el boton abrir");
+		}
+		if(e.getSource()==this.guardar){
+			System.out.println("Se ha presionado el boton lanzar");
+		}
 		
 	}
 

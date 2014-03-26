@@ -13,11 +13,13 @@ public class Ventana extends JFrame implements ActionListener{
 		this.add(new PanelAnimacion(),BorderLayout.CENTER);
 		this.pack();
 		this.setVisible(true);
+		this.setLocationRelativeTo(null);
 
 	}
 
 	public static void main(String[] args) {
 		Ventana miventana= new Ventana();
+		
 	}
 
 
