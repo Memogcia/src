@@ -27,6 +27,7 @@ public class PanelBotones extends JPanel implements ActionListener {
 				   etiquetavy,
 				   etiquetamax,
 				   etiquetaac,
+				   etiquetamts,
 				   etiquetadib;
 	
 	private int x=0,
@@ -59,12 +60,12 @@ public class PanelBotones extends JPanel implements ActionListener {
 		this.aceleracion.setBounds(120, 280, 70, 35);
 
 		this.barra = new JSlider (JSlider.VERTICAL,0,100,0);
-		this.barra.setPaintLabels(true);
 		this.barra.setPaintTicks(true);
 		this.barra.setMajorTickSpacing(25);
-		this.barra.setMinorTickSpacing(5);
-		this.barra.setPaintLabels(true);
-		this.barra.setBounds(120, 360, 70, 145);
+		this.barra.setBounds(60, 360, 70, 145);
+		
+		this.etiquetamts=new JLabel("mts: "+alturamax);
+		this.etiquetamts.setBounds(150, 410, 90, 40);
 
 		this.etiquetadib=new JLabel("Dibujar trayectoria");
 		this.etiquetadib.setBounds(90, 520, 350,50);
@@ -93,6 +94,7 @@ public class PanelBotones extends JPanel implements ActionListener {
 		this.add(this.etiquetaac);
 		this.add(this.barra);
 		this.add(this.dibujar);
+		this.add(this.etiquetamts);
 		this.add(this.etiquetadib);
 		this.add(this.lanzar);
 		this.add(this.guardar);
