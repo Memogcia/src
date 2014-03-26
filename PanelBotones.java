@@ -1,15 +1,11 @@
 import java.awt.Checkbox;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
@@ -34,9 +30,7 @@ public class PanelBotones extends JPanel implements ActionListener {
 				   etiquetadib;
 
 	public PanelBotones(){
-		//((FlowLayout)this.getLayout()).setAlignment(FlowLayout.LEFT);
-		//JScrollPane scroller = new JScrollPane(panelBoton); 
-
+		
 		this.setLayout(null);
 		
 		this.etiquetavx=new JLabel("Vx:");
@@ -99,13 +93,12 @@ public class PanelBotones extends JPanel implements ActionListener {
 		this.add(this.guardar);
 		this.add(this.abrir);
 		
-		//this.setBackground(Color.BLACK);
 		this.setPreferredSize(new Dimension (250,700));
 
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
