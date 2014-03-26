@@ -23,13 +23,7 @@ public class Ventana extends JFrame implements ActionListener{
 	public Ventana(){
 		super("Tiro Parabolico ");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		MiPanel panelBoton=new MiPanel();
-
 		this.add(new PanelBotones(),BorderLayout.WEST);
-
-
-
-		this.add(panelBoton);
 		this.pack();
 		this.setVisible(true);
 
@@ -50,7 +44,6 @@ public class Ventana extends JFrame implements ActionListener{
 			Ventana vabrir=new Ventana();
 			vabrir.pack();
 			vabrir.setVisible(true);
-			vabrir.pack();
 		 */
 	}
 }
