@@ -43,7 +43,6 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 	public PanelBotones(){
 		
 		this.setLayout(null);
-		//DocumentListener MyDocumentListener=new DocumentListener();
 		
 		this.etiquetavx=new JLabel("Vx:");
 		this.etiquetavx.setBounds(90, 60, 350, 50);
@@ -136,7 +135,6 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 		}
 		catch(NumberFormatException e){
 		}
-		
 	}
 	
 	public int getBarra(){

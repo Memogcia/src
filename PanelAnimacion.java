@@ -15,7 +15,7 @@ public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 	
 	public PanelAnimacion(){
 		this.setLayout(null);
-		//this.altura=PanelBotones.getAlturaMax();
+		//this.altura=Ventana.miventana.PanelBotones.getAlturaMax();
 		this.Jalturamax=new JLabel("mts: "+100);
 		this.Jalturamax.setBounds(80,50,90,40);
 		
