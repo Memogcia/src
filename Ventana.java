@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-public class Ventana extends JFrame implements ActionListener{
+public class Ventana extends JFrame{
 
 	public Ventana(){
 		super("Tiro Parabolico ");
@@ -22,18 +22,6 @@ public class Ventana extends JFrame implements ActionListener{
 		
 	}
 
-
-	public void actionPerformed(ActionEvent x) {
-		/*
-		if(x.getSource()==this.abrir){
-			MiPanel panelpopup=new MiPanel();
-			//panelpopup.setLayout(null);
-
-			Ventana vabrir=new Ventana();
-			vabrir.pack();
-			vabrir.setVisible(true);
-		 */
-	}
 }
 
 
