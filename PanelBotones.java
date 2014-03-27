@@ -1,9 +1,15 @@
+package src;
+
 import java.awt.Checkbox;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -12,6 +18,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileView;
+import javax.swing.plaf.FileChooserUI;
 
 
 public class PanelBotones extends JPanel implements ActionListener, ChangeListener, DocumentListener {
@@ -39,9 +48,11 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 				alturamax=100;
 	
 	private double nacelereacion=-9.81;
+	
+	private Ventana v;
 
-	public PanelBotones(){
-		
+	public PanelBotones(Ventana v){
+		this.v = v;
 		this.setLayout(null);
 		
 		this.etiquetavx=new JLabel("Vx:");
@@ -130,7 +141,9 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 		try{
 			if(altura.getText()!=null || altura.getText()!=""){
 				this.alturamax=Integer.parseInt(this.altura.getText());
-				this.barra.setMaximum(this.alturamax);
+				
+				
+				//this.barra.Integer.toString((this.alturamax));
 			}
 		}
 		catch(NumberFormatException e){
@@ -164,6 +177,8 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 		if(e.getSource()==this.barra){
 			valor=barra.getValue();
 			this.etiquetamts.setText("mts: "+valor);
+	
+			this.v.getPanelAnimacion().setY(valor);
 		}
 		
 	}
