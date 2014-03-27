@@ -179,6 +179,8 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 			this.etiquetamts.setText("mts: "+valor);
 	
 			this.v.getPanelAnimacion().setY(valor);
+			this.v.getPanelAnimacion().setAlturaMaxima(Integer.parseInt(this.altura.getText()));
+			
 		}
 		
 	}

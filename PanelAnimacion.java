@@ -13,10 +13,11 @@ import javax.swing.JPanel;
 public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 	
 	private int x=75,
-			    y=150;
+			    y=0;
+	private double formula;
 	
 	private JLabel Jalturamax;
-	private int altura;
+	private int altura=1;
 	private Ventana v;
 	
 	public PanelAnimacion(Ventana v){
@@ -28,7 +29,7 @@ public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 		this.Jalturamax=new JLabel("mts: "+100);
 		this.Jalturamax.setBounds(80,50,90,40);
 		
-		this.add(this.Jalturamax);
+		//this.add(this.Jalturamax);
 		
 		this.setPreferredSize(new Dimension(800,720));
 		
@@ -54,7 +55,11 @@ public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 		g.drawLine(100, 90, 100, 590);
 		g.drawLine(100, 590, 720, 590);
 		g.setColor(Color.BLUE);
-		g.fillOval(this.x, this.y, 50, 50);
+		//this.formula=this.y*
+		int escala = (500*this.y)/this.altura;
+		System.out.println(escala);
+		
+		g.fillOval(this.x, 590-(escala+25), 50, 50);
 		
 	}
 	
@@ -92,6 +97,12 @@ public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void setAlturaMaxima(int alturaMax) {
+		// TODO Auto-generated method stub
+		this.altura = alturaMax;
+		System.out.println(this.altura);
 	}
 
 }
