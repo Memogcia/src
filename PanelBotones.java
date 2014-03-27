@@ -49,6 +49,8 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 	
 	private double nacelereacion=-9.81;
 	
+	private boolean movimiento;
+	
 	private Ventana v;
 
 	public PanelBotones(Ventana v){
@@ -161,7 +163,8 @@ public class PanelBotones extends JPanel implements ActionListener, ChangeListen
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.lanzar){
-			System.out.println("Se ha lanzado la pelota");
+			this.v.getPanelAnimacion().setMovimiento(movimiento);
+		
 		}
 		if(e.getSource()==this.abrir){
 			System.out.println("Se ha presionado el boton abrir");

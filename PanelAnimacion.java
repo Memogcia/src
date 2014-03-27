@@ -15,6 +15,7 @@ public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 	private int x=75,
 			    y=0;
 	private double formula;
+	private boolean movimiento;
 	
 	private JLabel Jalturamax;
 	private int altura=1;
@@ -23,13 +24,16 @@ public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 	public PanelAnimacion(Ventana v){
 		this.setLayout(null);
 		this.v=v;
+		Thread myHilo=new Thread(this);
+		this.movimiento=false;
+		this.addMouseListener(this);
+		myHilo.start(); 
 		
 		
-		//this.altura=Ventana.miventana.PanelBotones.getAlturaMax();
 		this.Jalturamax=new JLabel("mts: "+100);
 		this.Jalturamax.setBounds(80,50,90,40);
 		
-		//this.add(this.Jalturamax);
+		
 		
 		this.setPreferredSize(new Dimension(800,720));
 		
@@ -45,17 +49,19 @@ public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 		this.repaint();
 	}
 	
+	public void setMovimiento(boolean movimiento){
+		this.movimiento=movimiento;
+		this.repaint();
+	}
+	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		/*this.x=75;
-		this.y=150;*/
 				
 		g.drawLine(0, 0, 0, 720);
 		g.drawLine(100, 90, 100, 590);
 		g.drawLine(100, 590, 720, 590);
 		g.setColor(Color.BLUE);
-		//this.formula=this.y*
 		int escala = (500*this.y)/this.altura;
 		System.out.println(escala);
 		
@@ -65,13 +71,31 @@ public class PanelAnimacion extends JPanel implements Runnable,MouseListener {
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		try {
+			while(true){
+				Thread.sleep(10);
+				if(movimiento){
+					this.x+=5;
+					this.y--;
+					this.repaint();
+				}
+			}
+		}
+		catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e);
+		}
+		
 		
 	}
 
+	
+	
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		this.movimiento=true;
 		
 	}
 
